@@ -1,28 +1,18 @@
-// Wait for the DOM to fully load
-document.addEventListener('DOMContentLoaded', () => {
-    // Elements for interactivity
-    const randomCoffeeBtn = document.querySelector('.btn.turquoise-bg');
-    const jsonCoffeeBtn = document.querySelector('.btn.amethyst-bg');
-    const coffeeMachineMsg = document.createElement('div');
+const orderForm = document.getElementById('order-form');
+const orderSummary = document.getElementById('order-summary');
 
-    // Create a section for the coffee machine message
-    coffeeMachineMsg.classList.add('teapot-message');
-    coffeeMachineMsg.innerHTML = `
-        <h1>I'm a coffee machine</h1>
-        <p>This server is a coffee machine, not a teapot.</p>
-    `;
-    document.body.appendChild(coffeeMachineMsg);
+orderForm.addEventListener('submit', function(event) {
+    event.preventDefault(); 
 
-    // Event listener for random coffee image
-    randomCoffeeBtn.addEventListener('click', (event) => {
-        event.preventDefault();
-        fetchRandomCoffee();
-    });
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const address = document.getElementById('address').value;
+    const coffee = document.getElementById('coffee').value;
+    const size = document.getElementById('size').value;
 
-    // Event listener for random coffee JSON
-    jsonCoffeeBtn.addEventListener('click', (event) => {
-        event.preventDefault();
-        fetchRandomCoffeeJSON();
-    });
+    const orderItem = document.createElement('li');
+    orderItem.textContent = `${name} (Phone: ${phone}, Address: ${address}) ordered a ${size} ${coffee}.`;
+    orderSummary.appendChild(orderItem);
+    orderForm.reset();
+});
 
-    // Function to fetch a random coffee image

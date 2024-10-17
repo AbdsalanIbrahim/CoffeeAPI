@@ -1,36 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cafe Bricks</title>
-    <link rel="stylesheet" href="path/to/your/styles.css"> <!-- New CSS file -->
-    <link href="{{ config.domain }}assets/modesta.css" type="text/css" rel="stylesheet">
-    <meta name="theme-color" content="#d35400">
-    <meta content="{{ config.domain }}assets/profile.png" property="og:image" />
-    <link rel="icon" type="image/x-icon" href="{{ config.domain }}assets/profile.png">
-    <meta content="Cafe Bricks" property="og:title" />
-    <meta content="{{ config.description }}" property="og:description" />
-    <meta content="{{ config.description }}" name="description" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe Bricks</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="dark-theme github">
-    <section class="fullscreen">
-        <div class="background" style="background-image: url('{{ background }}');"></div>
-        <div class="center-object">
-            <section class="me">
-                <h1 class="title">☕ Cafe Bricks</h1>
-                <span class="undertitle">{{ config.description }}<br><i>Images in API: <b>{{ images }}</b></i></span>
-            </section>
-            <div class="buttons">
-                <a href="random" class="btn animation turquoise-bg" target="_blank">Random coffee</a>
-                <a href="random.json" class="btn animation amethyst-bg" target="_blank">Random coffee [ JSON ]</a>
-                <a href="https://github.com/AlexFlipnote/CoffeeAPI" class="btn animation github-bg" target="_blank">GitHub</a>
-            </div>
-        </div>
-        <div class="teapot-message">
-            <h1>I'm a coffee machine</h1>
-            <p>This server is a coffee machine, not a teapot.</p>
-        </div>
-    </section>
+<body>
+    <header>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsiRQkvQ-pVZbmWz0r8yO5z13u3lGokQOvSw&s" alt="Cafe Bricks Logo" class="logo">
+        <h1>Welcome to Cafe Bricks</h1>
+    </header>
+
+    <section id="order-section">
+        <h2>Place Your Coffee Order</h2>
+        <form id="order-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" placeholder="Your Name" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" placeholder="Your Phone Number" required>
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" placeholder="Your Address" required>
+
+            <label for="coffee">Coffee Type:</label>
+            <select id="coffee" required>
+                <option value="Espresso">Espresso</option>
+                <option value="Latte">Latte</option>
+                <option value="Cappuccino">Cappuccino</option>
+                <option value="Americano">Americano</option>
+            </select>
+
+            <div id="coffee-images">
+                <img id="espresso-img" src="https://www.seriouseats.com/thmb/MS_5p-UVwIHCrr5MaXonYJajP7o=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/__opt__aboutcom__coeus__resources__content_migration__serious_eats__seriouseats.com__2018__06__20180613-coffee-vs-espresso-vicky-wasik-3-1500x1125-418fa2a14e7249b18040c2c34bf8569c.jpg" alt="Espresso" class="coffee-image">
+                <img id="latte-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR8Q_RrELDLpBSuhHF9CEAWgSBo9mRQtSy-g&s" alt="Latte" class="coffee-image">
+                <img id="cappuccino-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE55ZIrMBNiVuDG386CsA3QPIZUDKYD63b3Q&s" alt="Cappuccino" class="coffee-image">
+                <img id="americano-img" src="https://www.craftcoffeeguru.com/wp-content/uploads/2019/02/americano12-870x577.jpg" alt="Americano" class="coffee-image">
+            </div>
+
+            <label for="size">Size:</label>
+            <select id="size" required>
+                <option value="Small">Small</option>
+                <option value="Medium">Medium</option>
+                <option value="Large">Large</option>
+            </select>
+
+            <button type="submit">Place Order</button>
+        </form>
+    </section>
+
+    <section id="orders-list">
+        <h2>Your Orders</h2>
+        <ul id="order-summary"></ul>
+    </section>
+
+    <script src="index.js"></script>
 </body>
 </html>
